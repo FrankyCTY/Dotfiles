@@ -8,3 +8,7 @@ then
     brew install stow
     exit
 fi
+
+# Install zsh and oh my zsh etc.
+
+stowln *
