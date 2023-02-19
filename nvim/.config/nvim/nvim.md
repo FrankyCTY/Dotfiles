@@ -1,5 +1,11 @@
 https://neovim.io/doc/user/lua-guide.html#lua-guide
 
+## Requirements
+```
+brew install lua-language-server
+```
+
+
 ## Lua
 
 Lua is a programming language and nvim allows us to use lua to configure a lot of stuff as it also acts as a bridge to multiple underneath API such as vim.api
