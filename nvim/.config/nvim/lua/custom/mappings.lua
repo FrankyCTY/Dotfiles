@@ -9,9 +9,6 @@ local keymap = vim.keymap
 -- which essentially discards any text that is yanked or deleted into it.
 keymap.set('n', 'x', '"_x')
 
--- Delete backwards
-keymap.set('n', 'dw', 'vb"_d')
-
 -- Increment/decrement
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
@@ -40,10 +37,10 @@ keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
 --  auto compleete
-keymap.set('i', '"', '""<left>', {noremap = true})
-keymap.set('i', "'", "''<left>", { noremap = true })
-keymap.set('i', '(', '()<left>', { noremap = true })
-keymap.set('i', '[', '[]<left>', { noremap = true })
-keymap.set('i', '{', '{}<left>', { noremap = true })
-keymap.set('i', '{<CR>', '{<CR>}<ESC>O', { noremap = true })
-keymap.set('i', '{;', '{<CR>};<ESC>O', { noremap = true })
+-- keymap.set('i', '"', '""<left>', {noremap = true})
+-- keymap.set('i', "'", "''<left>", { noremap = true })
+-- keymap.set('i', '(', '()<left>', { noremap = true })
+-- keymap.set('i', '[', '[]<left>', { noremap = true })
+-- keymap.set('i', '{', '{}<left>', { noremap = true })
+-- keymap.set('i', '{<CR>', '{<CR>}<ESC>O', { noremap = true })
+-- keymap.set('i', '{;', '{<CR>};<ESC>O', { noremap = true })
