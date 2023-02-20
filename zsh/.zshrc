@@ -182,3 +182,5 @@ if [ -f '/Users/chantakyu/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export DATCH_TOOLS_PATH=~/tools
 export PATH=$DATCH_TOOLS_PATH/scripts:$PATH
+
+export EDITOR=nvim
