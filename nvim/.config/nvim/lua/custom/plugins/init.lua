@@ -2,6 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+vim.g.gitblame_enabled = 0;
+
 return {
     "nvim-tree/nvim-tree.lua",
     version = "*",
