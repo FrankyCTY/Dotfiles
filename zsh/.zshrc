@@ -146,6 +146,9 @@ testunstowln() {
   stow -nvDt ~ $1
 }
 
+## Lazygit
+alias lzg="lazygit"
+
 ## other aliases
 alias cdw='cd ~/applications/workdir'
 alias cdp="cd ~/applications/pdir"
