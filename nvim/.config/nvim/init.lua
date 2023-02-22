@@ -277,8 +277,11 @@ vim.keymap.set('n', '<C-f>', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
-    previewer = false,
   })
+  -- require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  --   winblend = 10,
+  --   previewer = false,
+  -- })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<C-p>', function() return require('telescope.builtin').find_files({hidden = true, no_ignore = false, no_ignore_parent = false}) end, { desc = '[S]earch [F]iles (Include hidden files)' })
@@ -380,9 +383,12 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  -- nmap('gr', function() return require('telescope.builtin').lsp_references({fname_width = 0.5, layout_strategy = 'vertical'}) end, '[G]oto [R]eferences')
+  nmap('gr', function() return require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({fname_width = 0.5, layout_config = {
+    width = 0.8
+  }})) end, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('gt', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap('gt', vim.lsp.buf.type_definition, '[T]ype [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
