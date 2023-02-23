@@ -54,5 +54,8 @@ return {
   },
   {
     'f-person/git-blame.nvim'
+  },
+  {
+    'axelvc/template-string.nvim'
   }
 }
