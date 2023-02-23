@@ -57,5 +57,8 @@ return {
   },
   {
     'axelvc/template-string.nvim'
+  },
+  {
+    'princejoogie/dir-telescope.nvim'
   }
 }
