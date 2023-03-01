@@ -63,4 +63,8 @@ return {
   {
     'princejoogie/dir-telescope.nvim',
   },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 }
