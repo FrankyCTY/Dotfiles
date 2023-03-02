@@ -67,4 +67,7 @@ return {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
+  {
+    'iamcco/markdown-preview.nvim',
+  },
 }
