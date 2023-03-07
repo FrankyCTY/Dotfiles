@@ -277,6 +277,9 @@ vim.keymap.set('n', '<C-f>', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
+    layout_config = {
+      width = 0.6,
+    },
   })
   -- require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
   --   winblend = 10,
@@ -284,7 +287,9 @@ vim.keymap.set('n', '<C-f>', function()
   -- })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<C-p>', function() return require('telescope.builtin').find_files({hidden = true, no_ignore = false, no_ignore_parent = false}) end, { desc = '[S]earch [F]iles (Include hidden files)' })
+vim.keymap.set('n', '<C-p>', function()
+  return require('telescope.builtin').find_files { hidden = true, no_ignore = false, no_ignore_parent = false }
+end, { desc = '[S]earch [F]iles (Include hidden files)' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -384,9 +389,11 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   -- nmap('gr', function() return require('telescope.builtin').lsp_references({fname_width = 0.5, layout_strategy = 'vertical'}) end, '[G]oto [R]eferences')
-  nmap('gr', function() return require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({fname_width = 0.5, layout_config = {
-    width = 0.8
-  }})) end, '[G]oto [R]eferences')
+  nmap('gr', function()
+    return require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown { fname_width = 0.5, layout_config = {
+      width = 0.8,
+    } })
+  end, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gt', vim.lsp.buf.type_definition, '[T]ype [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -505,14 +512,12 @@ cmp.setup {
   },
 }
 
-
 -- Other lua files
-require('custom.mappings')
+require 'custom.mappings'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-
 -- Format on save
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre" -- or "BufWritePost"
-local async = event == "BufWritePost"
+local group = vim.api.nvim_create_augroup('lsp_format_on_save', { clear = false })
+local event = 'BufWritePre' -- or "BufWritePost"
+local async = event == 'BufWritePost'

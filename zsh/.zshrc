@@ -187,3 +187,5 @@ export DATCH_TOOLS_PATH=~/tools
 export PATH=$DATCH_TOOLS_PATH/scripts:$PATH
 
 export EDITOR=nvim
+export DATCH_TOOLS_PATH=/Users/chantakyu/applications/workdir/tools
+export PATH=$DATCH_TOOLS_PATH/scripts:$PATH
