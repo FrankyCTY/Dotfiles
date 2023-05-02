@@ -292,6 +292,7 @@ vim.keymap.set('n', '<C-p>', function()
 end, { desc = '[S]earch [F]iles (Include hidden files)' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+-- TO: hidden true, no ignore true
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
@@ -390,9 +391,13 @@ local on_attach = function(_, bufnr)
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   -- nmap('gr', function() return require('telescope.builtin').lsp_references({fname_width = 0.5, layout_strategy = 'vertical'}) end, '[G]oto [R]eferences')
   nmap('gr', function()
-    return require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown { fname_width = 0.5, layout_config = {
-      width = 0.8,
-    } })
+    return require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown {
+      fname_width = 0.5,
+      layout_config = {
+        width = 0.8,
+        height = 0.4,
+      },
+    })
   end, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('gt', vim.lsp.buf.type_definition, '[T]ype [D]efinition')

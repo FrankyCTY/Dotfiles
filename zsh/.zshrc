@@ -15,6 +15,7 @@ export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export PATH=$PATH:$HOME/.arkade/bin
+export PATH=$PATH:~/.local/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -25,6 +26,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     zsh-autosuggestions
+    poetry
 )
 
 source ~/.zshrc.secret
@@ -88,6 +90,12 @@ alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%
 
 ## checkout a new remote branch (exists remote, not locally)
 ## git checkout -b LocalName origin/remotebranchname (checkout a remote branch)
+
+## 1Password alias
+alias opfzf="op item list --vault personal | fzf"
+
+## aws
+alias aws-login="aws-vault login franky-ro"
 
 ## npm aliases
 alias ni="npm install"
@@ -189,3 +197,31 @@ export PATH=$DATCH_TOOLS_PATH/scripts:$PATH
 export EDITOR=nvim
 export DATCH_TOOLS_PATH=/Users/chantakyu/applications/workdir/tools
 export PATH=$DATCH_TOOLS_PATH/scripts:$PATH
+
+# pnpm
+export PNPM_HOME="/Users/chantakyu/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# pipenv
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+
+# pyenv (python version manager) 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# poetry (package version manager for application development) https://python-poetry.org/docs/#installing-with-pipx
+# [Not needed in oh my zsh] In a Unix-based shell environment, the fpath environment variable is used to specify the directories where the shell looks for executable files when you type a command. 
+mkdir $ZSH_CUSTOM/plugins/poetry
+poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+
+# ============= Auto completion =================
+source <(kubectl completion zsh)
+
+export PATH=$(which aws_completer):$PATH
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C $(which aws_completer) aws
